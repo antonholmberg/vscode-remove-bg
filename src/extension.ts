@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { addSuffix } from "./fileUtils";
-import removeBackground from "./removeBg";
+import { removeBackgroundFromImageFile } from "remove.bg";
 
 function loadApiKey(): string | undefined {
   const config = vscode.workspace.getConfiguration("remove-bg");
@@ -29,7 +29,14 @@ export function activate(context: vscode.ExtensionContext) {
       });
 
       try {
-        await removeBackground(apiKey, sourceFile, outFile);
+        await removeBackgroundFromImageFile({
+          path: sourceFile,
+          apiKey: apiKey,
+          outputFile: outFile,
+          size: "regular",
+          type: "auto"
+        });
+
         vscode.window.showInformationMessage("Background remove successfully!");
       } catch (e) {
         vscode.window.showErrorMessage("Failed to remove background.");
