@@ -1,0 +1,61 @@
+{
+  "name": "remove-bg",
+  "displayName": "remove-bg",
+  "description": "Use remove.bg to remove background from image files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": [
+      {
+        "title": "Remove.bg configuration",
+        "properties": {
+          "remove-bg.apiKey": {
+            "type": "string",
+            "description": "The API key for remove.bg"
+          }
+        }
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "remove-bg.removeBg",
+          "when": "resourceExtname =~ /\\.png$|\\.jpg$|\\.jpeg$/",
+          "group": "navigation"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "remove-bg.removeBg",
+        "title": "Remove background"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "yarn run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28",
+    "tslint": "^5.12.1",
+    "@types/node": "^10.12.21",
+    "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "remove.bg": "^1.1.0"
+  }
+}
