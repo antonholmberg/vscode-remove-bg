@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onCommand:remove-bg.removeBg"
   ],
   "main": "./out/extension.js",
   "contributes": {
