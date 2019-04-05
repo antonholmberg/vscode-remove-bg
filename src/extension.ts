@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { addSuffix } from "./fileUtils";
-import { removeBackgroundFromImageFile } from "remove.bg";
+import ImageProcessor from "./ImageProcessor";
 
 function loadApiKey(): string | undefined {
   const config = vscode.workspace.getConfiguration("remove-bg");
@@ -12,6 +12,7 @@ function loadApiKey(): string | undefined {
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const processor = new ImageProcessor();
   const disposable = vscode.commands.registerCommand(
     "remove-bg.removeBg",
     async (uri: vscode.Uri) => {
@@ -29,17 +30,14 @@ export function activate(context: vscode.ExtensionContext) {
       });
 
       try {
-        await removeBackgroundFromImageFile({
-          path: sourceFile,
+        await processor.processImage({
           apiKey: apiKey,
-          outputFile: outFile,
-          size: "regular",
-          type: "auto"
+          source: sourceFile,
+          output: outFile
         });
-
         vscode.window.showInformationMessage("Background remove successfully!");
       } catch (e) {
-        vscode.window.showErrorMessage("Failed to remove background.");
+        vscode.window.showErrorMessage(e);
       }
     }
   );
