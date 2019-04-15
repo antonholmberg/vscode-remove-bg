@@ -3,6 +3,11 @@
   "name": "remove-bg",
   "displayName": "remove-bg",
   "description": "Use remove.bg to remove background from image files",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/antonholmberg/vscode-remove-bg.git"
+  },
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.32.0"
