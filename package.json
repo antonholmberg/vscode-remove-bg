@@ -1,4 +1,5 @@
 {
+  "publisher": "antonholmberg",
   "name": "remove-bg",
   "displayName": "remove-bg",
   "description": "Use remove.bg to remove background from image files",
