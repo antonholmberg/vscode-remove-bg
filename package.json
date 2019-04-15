@@ -3,7 +3,7 @@
   "name": "remove-bg",
   "displayName": "remove-bg",
   "description": "Use remove.bg to remove background from image files",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.32.0"
   },
