@@ -15,7 +15,7 @@
     "url": "https://github.com/antonholmberg/vscode-remove-bg.git"
   },
   "icon": "logo.png",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.32.0"
   },
