@@ -21,11 +21,11 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      const sourceFile = uri.path;
+      const sourceFile = uri.fsPath;
       const outFile = addSuffix({
         path: sourceFile,
         suffix: "-no-bg",
-        extension: "png"
+        extension: "png",
       });
 
       try {
@@ -34,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
           apiKey: apiKey,
           outputFile: outFile,
           size: "regular",
-          type: "auto"
+          type: "auto",
         });
 
         vscode.window.showInformationMessage("Background remove successfully!");
